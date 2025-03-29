@@ -90,7 +90,7 @@
                             <p>EDUConnect connects students from Kindergarten to Senior High with expert teachers in
                                 subjects like Math, STEM, Languages, Arts, Cooking, and more.</p>
                             <div class="slider-btn">
-                                <a class="button-default open-modal" href="#">Join Our Waiting List</a>
+                                <a class="button-default open-modal" data-target="waitingListModal">Join Our Waiting List</a>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,8 @@
                                 <p>Join our waiting list today and be the first to experience personalized learning like
                                     never before!</p>
                                 <!-- Learn More Button -->
-                                <button class="button-default" href="blog-details.html">Learn More</button>
+                                <!-- Learn More Button -->
+                                <a class="button-default" href="about_learn_more.html">Learn More</a>
                             </div>
                         </div>
                         <div class="col-lg-5">
@@ -126,23 +127,8 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Pop-up Dialogue Box (Modal) -->
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h3>Our Mission & Vision</h3>
-                    <p><strong>Mission:</strong> At EDUConnect, our mission is to provide accessible and personalized
-                        education for every student. We aim to bridge the gap between learners and educators by offering
-                        tailored learning experiences.</p>
-                    <p><strong>Vision:</strong> We envision a world where every student has the tools and resources they
-                        need to succeed academically and personally. Through innovation and collaboration, we strive to
-                        revolutionize the way education is delivered.</p>
-                    <p>Join us on this journey to transform education!</p>
-                </div>
-            </div>
-            <!-- End of Pop-up Dialogue Box -->
             <!-- End of About Area -->
+
             <!--Testimonial Area Start-->
             <div class="testimonial-area" id="testimonials">
                 <div class="container">
@@ -280,50 +266,36 @@
     <script src="js/main.js"></script>
     <script>
         // Modal Script
-        const openModalButtons = document.querySelectorAll(".open-modal");
-        const closeModalButton = document.querySelector(".close");
+const openModalButtons = document.querySelectorAll(".open-modal");
+const closeModalButton = document.querySelector(".close");
 
-        // Open modal
-        openModalButtons.forEach(button => {
-            button.addEventListener("click", function (event) {
-                event.preventDefault();
-                modal.style.display = "block";
-            });
-        });
+// Open modal
+openModalButtons.forEach(button => {
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+        const modalId = button.getAttribute("data-target"); // Get the modal ID from the button
+        const modal = document.getElementById(modalId); // Find the modal by its ID
+        if (modal) {
+            modal.style.display = "block"; // Show the modal
+        }
+    });
+});
 
-        // Close modal
-        closeModalButton.addEventListener("click", function () {
-            modal.style.display = "none";
-        });
+// Close modal
+closeModalButton.addEventListener("click", function () {
+    const modal = document.querySelector(".modal");
+    if (modal) {
+        modal.style.display = "none"; // Hide the modal
+    }
+});
 
-        // Close modal if user clicks outside the modal content
-        window.addEventListener("click", function (event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-
-        // Get the modal and button elements
-        const modal = document.getElementById("myModal");
-        const btn = document.getElementById("learnMoreBtn");
-        const span = document.getElementsByClassName("close")[0];
-
-        // Open the modal when the "Learn More" button is clicked
-        btn.onclick = function () {
-            modal.style.display = "block";
-        };
-
-        // Close the modal when the close button (×) is clicked
-        span.onclick = function () {
-            modal.style.display = "none";
-        };
-
-        // Close the modal if the user clicks outside of it
-        window.onclick = function (event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
+// Close modal if user clicks outside the modal content
+window.addEventListener("click", function (event) {
+    const modal = document.querySelector(".modal");
+    if (event.target === modal) {
+        modal.style.display = "none"; // Hide the modal
+    }
+});
     </script>
 </body>
 
