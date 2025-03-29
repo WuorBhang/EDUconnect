@@ -112,7 +112,8 @@
                                 </p>
                                 <p>Join our waiting list today and be the first to experience personalized learning like
                                     never before!</p>
-                                <a class="button-default" href="#">Learn More</a>
+                                <!-- Learn More Button -->
+                                <button class="button-default" id="learnMoreBtn">Learn More</button>
                             </div>
                         </div>
                         <div class="col-lg-5">
@@ -125,6 +126,22 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Pop-up Dialogue Box (Modal) -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Our Mission & Vision</h3>
+                    <p><strong>Mission:</strong> At EDUConnect, our mission is to provide accessible and personalized
+                        education for every student. We aim to bridge the gap between learners and educators by offering
+                        tailored learning experiences.</p>
+                    <p><strong>Vision:</strong> We envision a world where every student has the tools and resources they
+                        need to succeed academically and personally. Through innovation and collaboration, we strive to
+                        revolutionize the way education is delivered.</p>
+                    <p>Join us on this journey to transform education!</p>
+                </div>
+            </div>
+            <!-- End of Pop-up Dialogue Box -->
             <!-- End of About Area -->
             <!--Testimonial Area Start-->
             <div class="testimonial-area" id="testimonials">
@@ -208,33 +225,7 @@
                 </div>
             </div>
             <!--Testimonial Area End-->
-            <!-- Call to Action Area Start -->
-            <div class="cta-area section-padding" id="cta"
-                style="display: flex; justify-content: center; align-items: center; height: 50vh; background-color: #0F172A;">
-                <div
-                    style="background: white; padding: 150px; border-radius: 15px; text-align: center; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); max-width: 1000px;">
-                    <h2 style="color: #1E293B; font-size: 24px; margin-bottom: 20px;">Be the First to Use EDUConnect
-                    </h2>
-                    <p>Join our waiting list and get notified when the platform is ready!</p>
-                    <a class="button-default open-modal" href="#"
-                        style="background-color: #F59E0B; color: white; padding: 20px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block;">Join
-                        Waiting List</a>
-                </div>
-            </div>
-            <!-- End of Call to Action Area -->
-            <!--Breadcrumb Banner Area Start-->
-            <div class="breadcrumb-banner-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="breadcrumb-text">
-                                <h1 class="text-center">Contact</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End of Breadcrumb Banner Area-->
+
             <!-- Footer Area Start -->
             <footer>
                 <div class="footer-area">
@@ -260,17 +251,23 @@
     <!-- End of Main Wrapper Area -->
 
     <!-- Modal -->
+    <!-- Modal -->
     <div id="waitingListModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Join Our Waiting List</h2>
-            <p>Enter your email below to be notified when EDUConnect is ready.</p>
+            <p>Enter your details below to be notified when EDUConnect is ready.</p>
             <form action="https://example.com/waiting-list" method="post">
-                <input type="email" placeholder="Enter your email address" required>
+                <input type="text" name="name" placeholder="Enter your name" required>
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <input type="tel" name="phone" placeholder="Enter your phone number" required>
+                <input type="text" name="subjects" placeholder="Interested subjects" required>
+                <input type="text" name="child_age_grade" placeholder="Child's age/grade" required>
                 <button type="submit">Submit</button>
             </form>
         </div>
     </div>
+
 
     <!-- Scripts -->
     <script src="js/vendor/modernizr-3.6.0.min.js"></script>
@@ -283,7 +280,6 @@
     <script src="js/main.js"></script>
     <script>
         // Modal Script
-        const modal = document.getElementById("waitingListModal");
         const openModalButtons = document.querySelectorAll(".open-modal");
         const closeModalButton = document.querySelector(".close");
 
@@ -306,6 +302,28 @@
                 modal.style.display = "none";
             }
         });
+
+        // Get the modal and button elements
+        const modal = document.getElementById("myModal");
+        const btn = document.getElementById("learnMoreBtn");
+        const span = document.getElementsByClassName("close")[0];
+
+        // Open the modal when the "Learn More" button is clicked
+        btn.onclick = function () {
+            modal.style.display = "block";
+        };
+
+        // Close the modal when the close button (×) is clicked
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
     </script>
 </body>
 
