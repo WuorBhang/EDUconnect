@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const formData = { name, email, grade };
 
         try {
-            const response = await fetch("http://localhost:5000/join-waiting-list", {
+            const response = await fetch("https://educonnect-backend.onrender.com/join-waiting-list", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
