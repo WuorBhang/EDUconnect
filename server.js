@@ -8,7 +8,7 @@ app.use(express.json());
 
 // ✅ CORS: Allow only your frontend domain
 app.use(cors({
-    origin: "https://educonnect-sepia.vercel.app", // Adjust this if needed
+    origin: "http://localhost:3000", // Corrected to match localhost frontend
     methods: ["POST"],
     allowedHeaders: ["Content-Type"]
 }));
@@ -47,7 +47,6 @@ app.post("/join-waiting-list", async (req, res) => {
         res.status(500).json({ message: "Email sending failed", error: error.message });
     }
 });
-
 
 // ✅ Health Check Route
 app.get("/", (req, res) => {
