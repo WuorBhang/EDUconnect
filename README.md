@@ -62,11 +62,13 @@ educonnect/
 ## 🚀 How to Run
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/WuorBhang/EDUcconnect.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd EDUcconnect
    ```
@@ -78,21 +80,25 @@ educonnect/
 ---
 
 ## 🤝 Contributing
+
 Contributions are welcome! Here's how you can help:
 
 1. Fork the repository.
 
 2. Create a new branch:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
 3. Commit your changes:
+
    ```bash
    git commit -m "Add your message here"
    ```
 
 4. Push to the branch:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -115,6 +121,3 @@ For inquiries, feedback, or collaborations, reach out via:
   
 - 📞 Phone: +254700797210
   
-```
-
-Let me know if you want this saved to a file or if you’d like to add more sections like screenshots, deployment instructions, or badges!
