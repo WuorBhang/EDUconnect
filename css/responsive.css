@@ -151,28 +151,6 @@
                padding: 10px 20px;
                /* Adjust button padding */
            }
-           /* Partners Section Adjustments */
-           .partners {
-               display: flex;
-               flex-direction: row;
-               /* Stack logos vertically */
-               align-items: center;
-               gap: 40px;
-               position: relative;
-               top: 4.2vh;
-           }
-
-           .partner img {
-               height: 100px;
-               /* Slightly bigger for visibility */
-               opacity: 0.8;
-               transition: opacity 0.2s ease;
-           }
-
-           .partner img:hover {
-               opacity: 1;
-           }
-
 
            /* About Section Adjustments */
            .about-section {
