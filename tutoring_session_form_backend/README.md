@@ -4,6 +4,7 @@
 This project is a backend system for managing tutoring session requests. It uses Express.js as the server, PostgreSQL as the database, and handles form submissions through AJAX. The form allows parents to request a free tutoring session for their children.
 
 ## Features
+
 - **Form Submission**: Parents can submit a request for a tutoring session by filling out a form with their and their child's details.
 - **Database Storage**: The form data is stored in a PostgreSQL database for future reference.
 - **Modal Popup**: The form is presented in a modal popup for a seamless user experience.
@@ -18,6 +19,7 @@ Before running the project, make sure you have the following installed:
 - [PostgreSQL](https://www.postgresql.org/download/) (Version 13 or higher)
 
 ### Database Configuration
+
 Make sure you have a PostgreSQL database running with the following credentials:
 
 - **Database**: `tutoring_sessions`
@@ -90,7 +92,8 @@ Ensure your HTML form is correctly linked to the `script.js` file and included i
 
 ## Usage
 
-1. **Submit a Session Request**: 
+1. **Submit a Session Request**:
+  
    - Go to the homepage and click the "Get Free Session Now" button.
    - A modal will pop up with a form asking for the parent's name, email, child's grade, and child's name.
    - Submit the form and the data will be saved to the database.
@@ -105,7 +108,9 @@ Ensure your HTML form is correctly linked to the `script.js` file and included i
 
 - **POST `/submit-session`**: Handles form submissions.
   - **Request Body**:
+  
     ```json
+  
     {
       "parentFirstName": "John",
       "parentLastName": "Doe",
@@ -114,7 +119,9 @@ Ensure your HTML form is correctly linked to the `script.js` file and included i
       "childName": "Jane Doe"
     }
     ```
+  
   - **Response**:
+  
     ```json
     {
       "message": "Session request submitted successfully",
