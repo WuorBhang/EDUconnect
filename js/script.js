@@ -1,80 +1,67 @@
-// Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function () {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
+// Get elements
+const modal = document.getElementById("sessionModal");
+const openModalBtn = document.getElementById("openModalBtn");
+const closeModalBtn = document.querySelector(".close-btn");
+const form = document.getElementById("sessionForm");
 
-    mobileMenuBtn.addEventListener('click', function () {
-        navMenu.classList.toggle('active');
+// Handle form submission
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const parentFirstName = form.firstName.value;
+  const parentLastName = form.lastName.value;
+  const parentEmail = form.email.value;
+  const grade = form.grade.value;
+  const childName = form.childName.value;
+
+  if (!parentFirstName || !parentLastName || !parentEmail || !grade || !childName) {
+    alert("All fields are required!");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:5000/submit-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        parentFirstName,
+        parentLastName,
+        parentEmail,
+        grade,
+        childName,
+      }),
     });
 
-    // Close menu when a link is clicked
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            navMenu.classList.remove('active');
-        });
-    });
+    const result = await response.json();
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Team Carousel functionality
-    const carousel = document.querySelector('.team-carousel');
-    const prevButton = document.querySelector('.prev-button');
-    const nextButton = document.querySelector('.next-button');
-    const members = document.querySelectorAll('.team-member');
-
-    let currentPosition = 0;
-    let memberWidth = members[0].offsetWidth + 30; // Width + gap
-    let visibleMembers;
-
-    // Determine visible members based on screen width
-    function updateCarouselSettings() {
-        if (window.innerWidth >= 992) {
-            visibleMembers = 3;
-        } else if (window.innerWidth >= 768) {
-            visibleMembers = 2;
-        } else {
-            visibleMembers = 1;
-        }
-
-        memberWidth = members[0].offsetWidth + 30;
-        currentPosition = 0;
-        carousel.style.transform = `translateX(0)`;
+    if (response.ok) {
+      alert("Session request submitted successfully!");
+      form.reset(); // Reset form
+      modal.style.display = "none"; // Close modal
+    } else {
+      alert(result.message || "An error occurred. Please try again.");
     }
-
-    window.addEventListener('resize', updateCarouselSettings);
-    updateCarouselSettings();
-
-    prevButton.addEventListener('click', function () {
-        if (currentPosition > 0) {
-            currentPosition--;
-            carousel.style.transform = `translateX(-${currentPosition * memberWidth}px)`;
-        }
-    });
-
-    nextButton.addEventListener('click', function () {
-        if (currentPosition < members.length - visibleMembers) {
-            currentPosition++;
-            carousel.style.transform = `translateX(-${currentPosition * memberWidth}px)`;
-        }
-    });
+  } catch (error) {
+    console.error("Error:", error);
+    alert("An error occurred while submitting the session request.");
+  }
 });
 
-//  adding footer year
-document.getElementById("current-year").textContent = new Date().getFullYear();
+// Open modal
+openModalBtn.addEventListener("click", function () {
+  modal.style.display = "block";
+});
+
+// Close modal
+closeModalBtn.addEventListener("click", function () {
+  modal.style.display = "none";
+});
+
+// Close if clicked outside modal content
+window.addEventListener("click", function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});

@@ -35,7 +35,7 @@
         <div class="container">
             <div class="hero-content">
                 <h2 class="hero-title">World-Class Learning<br>From Nigeria's Top<br>Educators</h2>
-                <a href="#contact" class="btn-primary">Get Free Session Now</a>
+                <button id="openModalBtn" class="btn-primary">Get Free Session Now</button>
             </div>
         </div>
     </section>
@@ -237,6 +237,48 @@
             </div>
         </div>
     </section>
+
+
+    <!-- Popup Form Modal -->
+    <div id="sessionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Request a Free Session</h2>
+            <form id="sessionForm">
+                <label for="firstName">Parent's First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+
+                <label for="lastName">Parent's Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+
+                <label for="email">Parent's Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="grade">Select Grade:</label>
+                <select id="grade" name="grade" required>
+                    <option value="">-- Select Grade --</option>
+                    <option value="Kindergarten">Kindergarten</option>
+                    <option value="Grade 1">Grade 1</option>
+                    <option value="Grade 2">Grade 2</option>
+                    <option value="Grade 3">Grade 3</option>
+                    <option value="Grade 4">Grade 4</option>
+                    <option value="Grade 5">Grade 5</option>
+                    <option value="Grade 6">Grade 6</option>
+                    <option value="Grade 7">Grade 7</option>
+                    <option value="Grade 8">Grade 8</option>
+                    <option value="Grade 9">Grade 9</option>
+                    <option value="Grade 10">Grade 10</option>
+                    <option value="Grade 11">Grade 11</option>
+                    <option value="Grade 12">Grade 12</option>
+                </select>
+
+                <label for="childName">Child's Name:</label>
+                <input type="text" id="childName" name="childName" required>
+
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 
 
     <!-- Footer -->
