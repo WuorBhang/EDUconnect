@@ -1,5 +1,8 @@
+# Backend and Frontend Communication with Database
 
-# Tutoring Session Form Backend
+![Database Sending Request](images/database_request.png)
+
+## Tutoring Session Form Backend
 
 This project is a backend system for managing tutoring session requests. It uses Express.js as the server, PostgreSQL as the database, and handles form submissions through AJAX. The form allows parents to request a free tutoring session for their children.
 
